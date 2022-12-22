@@ -13,6 +13,8 @@ function InfiniteScroll() {
   const [startDate, setStartDate] = useState(start);
   const [endDate, setEndDate] = useState(end);
   const [infiniteData, setInfiniteData] = useState([]);
+
+  //handle infinite call 
   useEffect(() => {
     setTimeout(async () => {
       const response = await axios.get(
@@ -21,8 +23,10 @@ function InfiniteScroll() {
       setInfiniteData((prev) => {
         return [...prev,response.data.reverse()]
       });
-    }, 200);
+    }, 100);
   }, [ endDate, startDate]);
+
+  //handle scroll function
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = async () => {
     console.log(window.innerHeight+document.documentElement.scrollTop>=document.documentElement.scrollHeight)
@@ -40,6 +44,8 @@ function InfiniteScroll() {
       setEndDate(end);
     }
   };
+
+  //handle window scroll
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
