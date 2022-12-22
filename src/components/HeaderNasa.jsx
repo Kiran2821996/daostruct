@@ -5,7 +5,7 @@ function HeaderNasa() {
    <div>
     <div className="nasa_header">
           <div className="name">
-            <img src={image} alt="" />
+            <img src={image} alt="logo" />
            <span>@B D Kiran Kumar</span>
           </div>
           <div>
