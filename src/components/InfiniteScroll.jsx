@@ -20,6 +20,7 @@ function InfiniteScroll() {
       const response = await axios.get(
         `https://api.nasa.gov/planetary/apod?api_key=gaff4Pwpu0Qg6woyFty1YhVRxhj4In1ImvOCyFD7&start_date=${endDate}&end_date=${startDate}&thumbs=true`
       );
+      console.log(response)
       setInfiniteData((prev) => {
         return [...prev,response.data.reverse()]
       });
@@ -29,9 +30,9 @@ function InfiniteScroll() {
   //handle scroll function
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = async () => {
-    console.log(window.innerHeight+document.documentElement.scrollTop>=document.documentElement.scrollHeight)
+    console.log(window.innerHeight,document.documentElement.scrollTop,document.documentElement.scrollHeight)
     if (
-      window.innerHeight + document.documentElement.scrollTop+1>=
+      window.innerHeight + document.documentElement.scrollTop+1<=
       document.documentElement.scrollHeight
     ) {
       setStartTime((prev) => prev + 7);

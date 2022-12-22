@@ -2,8 +2,10 @@ import React from "react";
 import Item from "./Item";
 
 function X7Item({ data }) {
+  console.log(data,"data")
   return (
     <div className="card_item">
+      
       {data.map((item) => {
         return (
           <>

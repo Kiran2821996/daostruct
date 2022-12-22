@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Logo from ""
 
 function HeaderNasa() {
   return (
    <div>
     <div className="nasa_header">
           <div className="name">
-            <h1>NASA <span>@B D Kiran Kumar</span> </h1>
+            <img src=".../public/assets/nasaLogo.png" alt='logo'/> <span>@B D Kiran Kumar</span>
           </div>
           <div>
             <h3>Astronomy picture of the day</h3>
