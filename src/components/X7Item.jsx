@@ -1,23 +1,18 @@
-import React from 'react'
-import { Card } from 'antd';
-const { Meta } = Card;
+import React from "react";
+import Item from "./Item";
 
-function X7Item({data}) {
+function X7Item({ data }) {
   return (
-    <div className='card_item'>{data.map(item=>{
-        return(
-            <Card
-            hoverable
-            style={{
-              width: 240,
-            }}
-            cover={item.media_type==="image"?<img src={item.url}/>: <iframe title={item.title} src={item.url}></iframe>}
-          >
-          </Card>
-        )
-       
-    })}</div>
-  )
+    <div className="card_item">
+      {data.map((item) => {
+        return (
+          <>
+            <Item item={item} />
+          </>
+        );
+      })}
+    </div>
+  );
 }
 
-export default X7Item
+export default X7Item;
