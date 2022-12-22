@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import video from "./assets/video.mp4"
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-    <App />
+<>
+<video autoPlay loop muted id='video'  >
+    <source src={video} type="video/mp4" />
+</video>
+<App />
+</>
+    
  
 );
 
