@@ -8,15 +8,15 @@ const { Meta } = Card;
 function SpotLight() {
   const [spotData, setSpotData] = useState();
   const [open, setOpen] = useState(false);
-  
-//Handle close model
-  const handleCancel=()=>{
-    setOpen(false)
-  }
-//Handle open model
-  const handleOpen=()=>{
-    setOpen(true)
-  }
+
+  //Handle close model
+  const handleCancel = () => {
+    setOpen(false);
+  };
+  //Handle open model
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     axios
@@ -32,45 +32,45 @@ function SpotLight() {
     <div className="spotlight">
       {spotData ? (
         <>
-          {"----------------------"}
           <Card
             title={spotData.title}
             style={{
               width: 400,
             }}
+            onClick={handleOpen }
           >
+            {spotData?.media_type === "image" ? (
+              <img alt="example" src={spotData.url} className="spot_img1" />
+            ) : (
+              <iframe
+                title={spotData.title}
+                src={spotData.url}
+                width={188}
+                className="spot_fra1"
+                height={93}
+              ></iframe>
+            )}
+
             <Paragraph ellipsis>{spotData.explanation}</Paragraph>
             <span>-{spotData.copyright}</span>
           </Card>
-          {"----------------------"}
-          <Card
-            onClick={handleOpen}
-            footer={null}
-            hoverable
-            style={{
-              width: 230,
-            }}
-            cover={
-              spotData?.media_type === "image" ? (
-                <img alt="example" src={spotData.url} />
-              ) : (
-                <iframe title={spotData.title} src={spotData.url}></iframe>
-              )
-            }
-          >
-            <Meta title={spotData.media_type} />
-          </Card>
-          {"----------------------"}
           <Modal
             title={spotData.title}
             centered
             open={open}
-            width={1200}
-            height={1400}
+            width={600}
             footer={null}
             onCancel={handleCancel}
           >
-            <img src={spotData.hdurl} alt="" width={1150} />
+            {spotData?.media_type === "image" ? (
+              <img src={spotData.hdurl} alt="" className="spot_img" />
+            ) : (
+              <iframe
+                title={spotData.title}
+                src={spotData.url}
+                className="spot_frame"
+              ></iframe>
+            )}
           </Modal>
         </>
       ) : (
